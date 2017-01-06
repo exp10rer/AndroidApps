@@ -3,7 +3,7 @@
 
 # Code 
 
-*Nothing here uet*
+*Nothing here  yet*
 
 
 # scripts
