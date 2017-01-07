@@ -7,6 +7,8 @@ HDRS = "N"
 
 # Parameters
 EC2 = "ec2"
+SPRTR = ";"
+STOPPED_IP = "0.0.0.0"
 
 # Instance states
 RUNNING_ST = "running"
@@ -36,14 +38,15 @@ def printList(instList, state, region) :
         vmCount = vmCount + 1
         # Only running instances have a valid public_ip_address, print 0.0.0.0 otherwise
         if state != RUNNING_ST:
-            ipAddr = "0.0.0.0"
+            ipAddr = STOPPED_IP
         else:
             ipAddr = instance.public_ip_address
 
         # using 0 th index is risky, but I experimented a bit in the AWS console and found out that new
         # tags are added after the name tag. If names are not printing properly this is the first place to look.
-        outputStr = outputStr + region + ":" + str(instance.tags[0]['Value']) + ":" + ipAddr
-        outputStr = outputStr + ":" + str(instance.instance_type) + ":" + state + "\n"
+        outputStr = outputStr + region + SPRTR + str(instance.tags[0]['Value']) + SPRTR + ipAddr\
+                    + SPRTR + str(instance.instance_type) + SPRTR + state + SPRTR\
+                    + str(instance.launch_time) + "\n"
 
     if HDRS == 'Y':
         print("There are " + str(vmCount) + " " + state + " VMs in AWS in the " + region + " region.")
