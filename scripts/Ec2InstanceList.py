@@ -2,7 +2,7 @@ import boto3
 
 # Debug y/n will print more statements
 DBG = "N"
-# HDRS n will not print any header statement, just data separated by ':' so that its easier to parse in excel
+# HDRS n will not print any header statement, just data separated by ':' (SPRTR) so that its easier to parse in excel
 HDRS = "N"
 
 # Parameters
